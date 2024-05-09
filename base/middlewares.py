@@ -23,7 +23,7 @@ class CustomMiddleware:
         # print("class based middleware - process view")
         return None
       
-        return HttpResponse(content="reponse from process view",status=400)
+        # return HttpResponse(content="reponse from process view",status=400)
         
     def process_exception(self,request, exception): 
         print("class based middleware - process exception")
