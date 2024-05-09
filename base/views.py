@@ -16,3 +16,7 @@ class Home(APIView):
     def post(self, request, *args, **kwargs):
         return Response({"message": "post response"},status=status.HTTP_201_CREATED)
     
+
+def exeption_view(request):
+    # raise Exception("this is an exception")
+    1000/0

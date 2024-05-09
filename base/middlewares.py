@@ -1,4 +1,5 @@
-from typing import Any
+from django.shortcuts import HttpResponse
+from rest_framework.response import Response
 
 
 class CustomMiddleware: 
@@ -12,6 +13,21 @@ class CustomMiddleware:
         response = self.get_response(request)
         print("class based middleware - after view call")
         return response
+    
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        '''
+        this hook is just called before the view is called
+        if you return None, the view will be called
+        else it will not be called
+        '''
+        # print("class based middleware - process view")
+        return None
+      
+        return HttpResponse(content="reponse from process view",status=400)
+        
+    def process_exception(self,request, exception): 
+        print("class based middleware - process exception")
+        return HttpResponse(content=f"reponse from process exception exeption = {exception}",status=400)
     
 
 
